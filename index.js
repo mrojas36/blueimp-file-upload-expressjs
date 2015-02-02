@@ -139,6 +139,7 @@ function uploadService(opts) {
         //else     console.log(data);           // successful response
 
         data.Contents.forEach(function(o) {
+          console.log("[FileUploader] S3 LIST : " + JSON.stringify(o));
           var fileInfo = new FileInfo({
             name: options.UUIDRegex.test(o.Key) ? o.Key.split('__')[1] : o.Key,
             size: o.Size
