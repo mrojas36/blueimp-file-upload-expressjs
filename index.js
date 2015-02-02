@@ -283,7 +283,7 @@ function uploadService(opts) {
       console.log("[FileUploader] S3 DELETE: " + JSON.stringify(req.url));
       var params = {
         Bucket: options.storage.aws.bucketName, // required
-        Key: decodeURIComponent(req.url.split('/')[req.url.split('/').length - 1]) // required
+        Key: req.body.key
       };
       console.log("[FileUploader] S3 : " + JSON.stringify(params));
       s3.deleteObject(params, function(err, data) {
