@@ -115,6 +115,7 @@ function uploadService(opts) {
             var fileInfo = new FileInfo({
               name: name,
               size: stats.size,
+              key: name,
               lastMod: stats.mtime
             }, options);
             fileInfo.initUrls(req);
@@ -142,6 +143,7 @@ function uploadService(opts) {
           console.log("[FileUploader] S3 LISTING : " + JSON.stringify(o));
           var fileInfo = new FileInfo({
             name: options.UUIDRegex.test(o.Key) ? o.Key.split('__')[1] : o.Key,
+            key: o.Key,
             size: o.Size
           }, options);
           var sss = {
